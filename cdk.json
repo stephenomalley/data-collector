@@ -1,5 +1,5 @@
 {
-  "app": "npx ts-node --prefer-ts-exts bin/data-collector.ts",
+  "app": "bunx ts-node --prefer-ts-exts bin/data-collector.ts",
   "watch": {
     "include": [
       "**"
