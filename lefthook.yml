@@ -1,0 +1,7 @@
+pre-commit:
+  parallel: true
+  commands:
+    oxlint:
+      run: bun run oxlint
+    prettier:
+      run: bun run prettier -w

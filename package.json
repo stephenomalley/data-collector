@@ -5,12 +5,14 @@
     "data-collector": "bin/data-collector.js"
   },
   "scripts": {
+    "lint": "oxlint . --fix && prettier . -w",
+    "lint-check": "oxlint . && prettier . --check",
     "build": "tsc",
     "minify": "uglifyjs src/dataCollector.js -o src/dataCollector.min.js -c -m",
     "watch": "tsc -w",
     "test": "bun test",
     "cdk": "cdk",
-    "synth": "cdk synth",
+    "synth": "bun run build && bun run minify && cdk synth",
     "deploy": "bun run build && bun run minify && cdk deploy --require-approval never",
     "destroy": "cdk destroy"
   },
@@ -19,6 +21,9 @@
     "@types/node": "20.11.30",
     "aws-cdk": "2.134.0",
     "jest": "^29.7.0",
+    "lefthook": "^1.6.8",
+    "oxlint": "^0.2.15",
+    "prettier": "^3.2.5",
     "ts-jest": "^29.1.2",
     "ts-node": "^10.9.2",
     "typescript": "~5.4.3",
