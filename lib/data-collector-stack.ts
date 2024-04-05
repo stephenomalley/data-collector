@@ -10,7 +10,7 @@ import * as iam from "aws-cdk-lib/aws-iam";
 export class DataCollectorStack extends cdk.Stack {
   constructor(scope: Construct, id: string, props?: cdk.StackProps) {
     super(scope, id, props);
-    const dataCollector: string = "data-collector.min.js";
+    const dataCollector: string = "protocol.min.js";
 
     // Create an S3 bucket
     const bucket = new s3.Bucket(this, "ProtocolCollector", {
@@ -61,7 +61,7 @@ export class DataCollectorStack extends cdk.Stack {
           dataCollector,
           fs
             .readFileSync(
-              path.resolve(__dirname, "..", "src", "dataCollector.min.js"),
+              path.resolve(__dirname, "..", "out", "protocol.min.js"),
             )
             .toString(),
         ),

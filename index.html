@@ -7,7 +7,19 @@
   </head>
   <body>
     <h1>Hello, World!</h1>
-    <!-- Include your script -->
-    <script src="src/dataCollector.js"></script>
+    <script data-name="protocol" data-type="application/javascript" data-handle="prolific-protocol">
+      (function (h, o, u, n, d) {
+        h = h[d] = h[d] || { q: [], onReady: function (c) { h.q.push(c) } }
+        d = o.createElement(u); d.async = 1; d.src = n
+        n = o.getElementsByTagName(u)[0]; n.parentNode.insertBefore(d, n)
+      })(window, document, 'script', 'out/protocol.min.js', 'PROTOCOL')
+
+      PROTOCOL.onReady(function () {
+        new window.ProtocolDataCollector({
+          url: 'https://d4udi08x66.execute-api.us-east-1.amazonaws.com/prod/protocol',
+        }).startRequestGathering();
+      });
+
+    </script>
   </body>
 </html>

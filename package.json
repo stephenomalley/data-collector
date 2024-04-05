@@ -7,14 +7,15 @@
   "scripts": {
     "lint": "oxlint . --fix && prettier . -w",
     "lint-check": "oxlint . && prettier . --check",
-    "build": "tsc",
-    "minify": "uglifyjs src/dataCollector.js -o src/dataCollector.min.js -c -m",
+    "build": "tsc && bun build src/protocol.ts --outdir ./out",
+    "minify": "uglifyjs out/protocol.js -o out/protocol.min.js -c -m",
     "watch": "tsc -w",
     "test": "bun test",
     "cdk": "cdk",
     "synth": "bun run build && bun run minify && cdk synth",
     "deploy": "bun run build && bun run minify && cdk deploy --require-approval never",
-    "destroy": "cdk destroy"
+    "destroy": "cdk destroy",
+    "local": "bun run build && bun run minify && python3 -m http.server 8881"
   },
   "devDependencies": {
     "@types/jest": "^29.5.12",
